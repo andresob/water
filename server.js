@@ -4,7 +4,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
 
-app.get('/scrape', function(req, res){
+app.get('/', function(req, res){
 	// Let's scrape Anchorman 2
 	url = 'http://www2.sabesp.com.br/mananciais/DivulgacaoSiteSabesp.aspx';
 
@@ -17,6 +17,7 @@ app.get('/scrape', function(req, res){
 			$('#cmbAno option').attr('selected', false);
 
 			var json;
+			var aux;
 			//setting select inputs
 			for (var i = 2003; i <=2015; i++) {
 				for (var j = 1; j <= 12; j++) {
@@ -24,9 +25,11 @@ app.get('/scrape', function(req, res){
 						//cleaning select inputs
 						$('#cmbDia option').attr('selected', false);
 						$('#cmbMes option').attr('selected', false);
-						$('#cmbAno option').attr('selected', false);
+						$('#cmbAno option').attr('elected', false);
+						$('#Imagebutton1').click();
 
-						json = $('#tabDados').text();
+						aux = $('#tabDados').text();
+						json = json + aux;
 					}
 				}
 			}
