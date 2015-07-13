@@ -1,5 +1,5 @@
 var express = require('express');
-var fs = require('fs');
+var fs 		= require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
@@ -16,6 +16,7 @@ app.get('/', function(req, res){
 			$('#cmbMes option').attr('selected', false);
 			$('#cmbAno option').attr('selected', false);
 
+			var press = jQuery.Event("keypress");
 			var json;
 			var aux;
 			//setting select inputs
@@ -25,8 +26,15 @@ app.get('/', function(req, res){
 						//cleaning select inputs
 						$('#cmbDia option').attr('selected', false);
 						$('#cmbMes option').attr('selected', false);
-						$('#cmbAno option').attr('elected', false);
-						$('#Imagebutton1').click();
+						$('#cmbAno option').attr('selected', false);
+
+						$('#cmbDia').val(k).prop('selected', true);
+						$('#cmbMes').val(j).prop('selected', true);
+						$('#cmbAno').val(i).prop('selected', true);
+
+
+						jQuery('#Imagebutton1').click();
+						press.which = 13;
 
 						aux = $('#tabDados').text();
 						json = json + aux;
